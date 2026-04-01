@@ -1,82 +1,98 @@
-// src/pages/Intro.jsx
-
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-export default function Intro() {
+const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
-
+    <div className="min-h-screen bg-slate-950 font-sans text-slate-100">
+      
       {/* NAVBAR */}
-      <div className="flex justify-between items-center px-10 py-5">
-        <h1 className="text-xl font-bold">UMRS</h1>
+      <nav className="w-full px-8 py-6 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-xl">U</span>
+            </div>
+            <span className="text-xl font-semibold tracking-tight text-white">
+              Unified Medical Record System
+            </span>
+          </div>
 
-        <button
-          onClick={() => navigate("/login")}
-          className="bg-white text-blue-700 px-5 py-2 rounded-lg font-semibold"
-        >
-          Login
-        </button>
-      </div>
+          {/* 🔥 ADMIN LOGIN BUTTON */}
+          <button
+            onClick={() => navigate("/admin/login")}
+            className="px-4 py-2 rounded-lg border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white transition"
+          >
+            Admin
+          </button>
+        </div>
+      </nav>
 
-      {/* HERO SECTION */}
-      <div className="flex flex-col items-center justify-center text-center px-6 mt-16">
-        
-        <h1 className="text-5xl font-bold mb-6 leading-tight">
-          Unified Medical Records
-          <br />
-          <span className="text-blue-200">One ID. Lifetime Health Data.</span>
+      {/* HERO */}
+      <header className="w-full px-8 pt-20 pb-32 text-center bg-slate-950">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-blue-100 to-blue-300 bg-clip-text text-transparent">
+          One Patient. One Record.<br />Universal Access.
         </h1>
 
-        <p className="max-w-2xl text-lg text-blue-100 mb-8">
-          Securely store and access your complete medical history anytime,
-          anywhere. Doctors upload records, patients access them instantly.
+        <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-16 leading-relaxed">
+          The next generation of Unified Medical Record systems. Secure, decentralized, and accessible for both healthcare providers and patients.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex gap-4">
+        {/* LOGIN CARDS */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-7xl mx-auto">
+
+          {/* PATIENT */}
           <button
-            onClick={() => navigate("/login")}
-            className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:scale-105 transition"
+            onClick={() => navigate("/patient/login")}
+            className="group relative w-full md:w-96 p-10 bg-white rounded-3xl border border-slate-200 shadow-xl hover:shadow-blue-900/30 hover:border-blue-300 transition-all duration-300 text-left"
           >
-            Get Started
+            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              👤
+            </div>
+
+            <h3 className="text-2xl font-bold mb-3 text-slate-950">For Patients</h3>
+            <p className="text-slate-600 text-base mb-6">
+              Access your records, history, and prescriptions instantly.
+            </p>
+
+            <span className="text-blue-600 font-semibold text-base">
+              Login to Portal →
+            </span>
           </button>
 
+          {/* DOCTOR */}
           <button
-            onClick={() => navigate("/login")}
-            className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-700 transition"
+            onClick={() => navigate("/doctor/login")}
+            className="group relative w-full md:w-96 p-10 bg-slate-900 rounded-3xl border border-slate-800 shadow-xl hover:shadow-blue-900/20 hover:border-blue-700 transition-all duration-300 text-left"
           >
-            Learn More
+            <div className="w-16 h-16 bg-blue-600/10 text-blue-500 rounded-2xl flex items-center justify-center mb-6 border border-blue-900">
+              🧑‍⚕️
+            </div>
+
+            <h3 className="text-2xl font-bold mb-3 text-white">For Doctors</h3>
+            <p className="text-slate-400 text-base mb-6">
+              Review patient data and manage clinical documentation.
+            </p>
+
+            <span className="text-blue-400 font-semibold text-base">
+              Provider Access →
+            </span>
           </button>
-        </div>
-      </div>
 
-      {/* FEATURES */}
-      <div className="grid md:grid-cols-3 gap-6 px-10 mt-20 pb-20">
-        
-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-2">🔐 Secure Access</h3>
-          <p className="text-blue-100">
-            Only authorized doctors and patients can access records.
+        </div>
+      </header>
+
+      {/* FOOTER */}
+      <footer className="w-full py-16 px-8 border-t border-slate-800 bg-slate-950">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-slate-500 text-sm">
+            © 2026 Unified Medical Record System. All rights reserved.
           </p>
         </div>
-
-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-2">🧾 Lifetime Records</h3>
-          <p className="text-blue-100">
-            All your medical history stored under one unique ID.
-          </p>
-        </div>
-
-        <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
-          <h3 className="text-xl font-semibold mb-2">⚡ Instant Access</h3>
-          <p className="text-blue-100">
-            Access reports anytime, anywhere with OTP login.
-          </p>
-        </div>
-      </div>
-
+      </footer>
     </div>
   );
-}
+};
+
+export default LandingPage;
